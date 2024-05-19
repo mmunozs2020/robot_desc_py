@@ -53,6 +53,13 @@ El diagrama de árbol de TF del robot se encuentra en el archivo `docs/frames_wi
 
 ![frames_with_arm](docs/frames_with_arm.png)
 
+
+### Vídeo Autoexplicativo de la Visualización
+
+El vídeo siguiente incluye una explicación del modelo visualizado en rviz, así como breves detalles de su composición y desarrollo:
+
+> [Visualizacion_fase_A](https://drive.google.com/file/d/1F__DsLU0J5GbC-R8W_zmUyRS07wysvMs/view?usp=drive_link)
+
 ---
 
 ## Fase B: Integración y Estudio de Dinámicas en Gazebo y ROS2
@@ -103,6 +110,14 @@ ros2 launch robot_desc_py gazebo_rover2.launch.py
 
 **Nota**: El robot aparece deslizándose y presenta comportamientos erróneos, pero se ha logrado la simulación de colisiones.
 
+A continuación queda un vídeo del comportamiento en cuestión del modelo robótico desarrollado en el mundo `sand.world`. Sólo se muestra la ejecución interna a gazebo, habiendo sido lanzada también la publicación de la info del robot en el topic `/robot_description`:
+
+> [Sand_world_fase_B](https://drive.google.com/file/d/1Fi62IE5EnE4e6-C20ijlcJXT7Fs8Qy0R/view?usp=drive_link)
+
+Por otro lado, el lanzamiento del mundo `floor.world` no funciona, pese a tener únicamente como cambio en el launcher el propio nombre del mundo y haber tratado de configurar sus elementos en reiteradas ocasiones.
+
+> [Floor_world_fase_B_fail_exec](https://drive.google.com/file/d/1Fg4aDW2I6bnABXyUsLEIVzSuvaL0tHRI/view?usp=drive_link)
+
 También es posible lanzar el robot en un mundo vacío en el cual se comporta de manera físicamente adecuada con el siguiente comando:
 ```
 ros2 launch robot_desc_py gazebo_rover.launch.py
@@ -111,6 +126,8 @@ ros2 launch robot_desc_py gazebo_rover.launch.py
 ## Consideraciones Finales
 
 Este proyecto se realizó como parte de una práctica universitaria y se encuentra aún en desarrollo.
+
+Los launcher empleados han sido desarrollados por iniciativa propia debido a ciertos problemas persistentes para los que no encontré solución que daban aquellos proporcionados en clase.
 
 ## Contacto
 
