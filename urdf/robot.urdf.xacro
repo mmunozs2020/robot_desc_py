@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+<!-- created with Phobos 1.0.1 "Capricious Choutengan" -->
+  <robot name="robot" xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <link name="arm_base_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.00267" ixy="0" ixz="0" iyy="0.00433" iyz="0" izz="0.00433"/>
+      </inertial>
+      <visual name="arm_base">
+        <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <box size="0.3 0.2 0.2"/>
+        </geometry>
+      </visual>
+      <collision name="arm_base">
+        <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <box size="0.3 0.2 0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_forearm_link">
+      <inertial>
+        <origin xyz="0 -0.3 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.01275" ixy="0" ixz="0" iyy="0.01275" iyz="0" izz="0.0015"/>
+      </inertial>
+      <visual name="arm_forearm">
+        <origin xyz="0 -0.3 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.15 0.15 0.6"/>
+        </geometry>
+      </visual>
+      <collision name="arm_forearm">
+        <origin xyz="0 -0.3 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.15 0.15 0.6"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_hand_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.03108" ixy="0" ixz="0" iyy="0.00417" iyz="0" izz="0.02708"/>
+      </inertial>
+      <visual name="arm_hand">
+        <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <box size="0.05 0.9 0.35"/>
+        </geometry>
+      </visual>
+      <collision name="arm_hand">
+        <origin xyz="0 0 0" rpy="0 1.5708 0"/>
+        <geometry>
+          <box size="0.05 0.9 0.35"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_humerus_link">
+      <inertial>
+        <origin xyz="-0.4 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.02208" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.02208"/>
+      </inertial>
+      <visual name="arm_humerus">
+        <origin xyz="-0.4 0 0" rpy="-1.5708 0 1.5708"/>
+        <geometry>
+          <box size="0.15 0.15 0.8"/>
+        </geometry>
+      </visual>
+      <collision name="arm_humerus">
+        <origin xyz="-0.4 0 0" rpy="-1.5708 0 1.5708"/>
+        <geometry>
+          <box size="0.15 0.15 0.8"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_left_finger">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.00142" ixy="0" ixz="0" iyy="0.00667" iyz="0" izz="0.00542"/>
+      </inertial>
+      <visual name="arm_lfinger">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <box size="0.4 0.05 0.2"/>
+        </geometry>
+      </visual>
+      <collision name="arm_lfinger">
+        <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+        <geometry>
+          <box size="0.4 0.05 0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_prehand_link">
+      <inertial>
+        <origin xyz="-0.15 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.00375" ixy="0" ixz="0" iyy="0.0015" iyz="0" izz="0.00375"/>
+      </inertial>
+      <visual name="arm_prehand">
+        <origin xyz="-0.15 0 0" rpy="-1.5708 0 -1.5708"/>
+        <geometry>
+          <box size="0.15 0.15 0.3"/>
+        </geometry>
+      </visual>
+      <collision name="arm_prehand">
+        <origin xyz="-0.15 0 0" rpy="-1.5708 0 -1.5708"/>
+        <geometry>
+          <box size="0.15 0.15 0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="arm_right_finger">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.45"/>
+        <inertia ixx="0.00142" ixy="0" ixz="0" iyy="0.00667" iyz="0" izz="0.00542"/>
+      </inertial>
+      <visual name="arm_rfinger">
+        <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.4 0.05 0.2"/>
+        </geometry>
+      </visual>
+      <collision name="arm_rfinger">
+        <origin xyz="0 0 0" rpy="-1.5708 0 0"/>
+        <geometry>
+          <box size="0.4 0.05 0.2"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="back_left_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.00065" ixy="0" ixz="0" iyy="0.00056" iyz="0" izz="0.00021"/>
+      </inertial>
+      <visual name="blw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.002.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="blw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="back_right_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.014" iyz="0" izz="0.01225"/>
+      </inertial>
+      <visual name="brw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.005.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="brw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="base_box_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.18833" ixy="0" ixz="0" iyy="0.18833" iyz="0" izz="0.375"/>
+      </inertial>
+      <visual name="box_base">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1.5 1.5 0.1"/>
+        </geometry>
+      </visual>
+      <collision name="box_base">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="1.5 1.5 0.1"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="base_link">
+      <inertial>
+        <origin xyz="-0.13251 0 0.1675" rpy="0 0 0"/>
+        <mass value="16.0"/>
+        <inertia ixx="1.32771" ixy="0" ixz="0" iyy="4.12376" iyz="0" izz="0.20041"/>
+      </inertial>
+      <visual name="chassis">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cube.011.dae" scale="0.65 0.5 0.065"/>
+        </geometry>
+      </visual>
+      <collision name="chassis">
+        <origin xyz="-0.13251 0 0.1675" rpy="0 0 0"/>
+        <geometry>
+          <box size="2.0 1.3 0.4"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="front_left_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.014" iyz="0" izz="0.01225"/>
+      </inertial>
+      <visual name="flw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="flw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="front_right_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.014" iyz="0" izz="0.01225"/>
+      </inertial>
+      <visual name="frw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.001.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="frw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mid_left_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.014" iyz="0" izz="0.01225"/>
+      </inertial>
+      <visual name="mlw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.003.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="mlw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="mid_right_wheel">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.7"/>
+        <inertia ixx="0.01225" ixy="0" ixz="0" iyy="0.014" iyz="0" izz="0.01225"/>
+      </inertial>
+      <visual name="mrw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="file:///home/msdelta/modsimspace/src/robot_desc_py/meshes/Cylinder.004.dae" scale="0.2 0.2 0.15"/>
+        </geometry>
+      </visual>
+      <collision name="mrw_body">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <cylinder radius="0.2" length="0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wall_b">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.21271" ixy="0" ixz="0" iyy="0.02604" iyz="0" izz="0.18833"/>
+      </inertial>
+      <visual name="wb">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.5 0.55"/>
+        </geometry>
+      </visual>
+      <collision name="wb">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.5 0.55"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wall_f">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.14833" ixy="0" ixz="0" iyy="0.00833" iyz="0" izz="0.14167"/>
+      </inertial>
+      <visual name="wf">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.3 0.3"/>
+        </geometry>
+      </visual>
+      <collision name="wf">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.3 0.3"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wall_l">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.02604" ixy="0" ixz="0" iyy="0.18854" iyz="0" izz="0.16417"/>
+      </inertial>
+      <visual name="wl">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.4 0.55"/>
+        </geometry>
+      </visual>
+      <collision name="wl">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.4 0.55"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <link name="wall_r">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="1.0"/>
+        <inertia ixx="0.02604" ixy="0" ixz="0" iyy="0.18854" iyz="0" izz="0.16417"/>
+      </inertial>
+      <visual name="wr">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.4 0.55"/>
+        </geometry>
+      </visual>
+      <collision name="wr">
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <geometry>
+          <box size="0.1 1.4 0.55"/>
+        </geometry>
+      </collision>
+    </link>
+
+    <joint name="arm_base_joint" type="continuous">
+      <origin xyz="-1.45 0 0.3925" rpy="0 -1.5708 0"/>
+      <parent link="base_link"/>
+      <child link="arm_base_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="50.0" velocity="10.0"/>
+    </joint>
+
+    <joint name="arm_forearm_joint" type="revolute">
+      <origin xyz="-0.8 0 0" rpy="0 0 0"/>
+      <parent link="arm_humerus_link"/>
+      <child link="arm_forearm_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-3.14" upper="1.04" effort="75.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="arm_hand_joint" type="continuous">
+      <origin xyz="-0.27407 0 0" rpy="-1.5708 0 1.5708"/>
+      <parent link="arm_prehand_link"/>
+      <child link="arm_hand_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="75.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="arm_humerus_joint" type="revolute">
+      <origin xyz="0 0 0.05" rpy="1.5708 1.5708 0"/>
+      <parent link="arm_base_link"/>
+      <child link="arm_humerus_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.57" upper="1.57" effort="75.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="arm_lfinger_joint" type="prismatic">
+      <origin xyz="0 -0.425 0.20093" rpy="-1.5708 1.5708 0"/>
+      <parent link="arm_hand_link"/>
+      <child link="arm_left_finger"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="0.0" upper="2.0" effort="80.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="arm_prehand_joint" type="revolute">
+      <origin xyz="0 -0.6 0" rpy="0 0 0"/>
+      <parent link="arm_forearm_link"/>
+      <child link="arm_prehand_link"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="-1.05" upper="4.71" effort="75.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="arm_rfinger_joint" type="prismatic">
+      <origin xyz="0 0.425 0.20093" rpy="1.5708 1.5708 0"/>
+      <parent link="arm_hand_link"/>
+      <child link="arm_right_finger"/>
+      <axis xyz="0 0 1.0"/>
+      <limit lower="0.0" upper="2.0" effort="80.0" velocity="11.0"/>
+    </joint>
+
+    <joint name="base_box_joint" type="fixed">
+      <origin xyz="-0.6 0 0.3925" rpy="0 0 0"/>
+      <parent link="base_link"/>
+      <child link="base_box_link"/>
+    </joint>
+
+    <joint name="blw_joint" type="continuous">
+      <origin xyz="-1.1 -0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="back_left_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="brw_joint" type="continuous">
+      <origin xyz="-1.1 0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="back_right_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="flw_joint" type="continuous">
+      <origin xyz="1.0 -0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="front_left_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="frw_joint" type="continuous">
+      <origin xyz="1.0 0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="front_right_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="mlw_joint" type="continuous">
+      <origin xyz="-0.3 -0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="mid_left_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="mrw_joint" type="continuous">
+      <origin xyz="-0.3 0.8 -0.4575" rpy="1.5708 0 0"/>
+      <parent link="base_link"/>
+      <child link="mid_right_wheel"/>
+      <axis xyz="0 0 1.0"/>
+      <limit effort="100.0" velocity="20.0"/>
+    </joint>
+
+    <joint name="wall_b_joint" type="fixed">
+      <origin xyz="-0.7 0 0.325" rpy="0 0 0"/>
+      <parent link="base_box_link"/>
+      <child link="wall_b"/>
+    </joint>
+
+    <joint name="wall_f_joint" type="fixed">
+      <origin xyz="0.7 0 0.2" rpy="0 0 0"/>
+      <parent link="base_box_link"/>
+      <child link="wall_f"/>
+    </joint>
+
+    <joint name="wall_l_joint" type="fixed">
+      <origin xyz="0.05 -0.7 0.325" rpy="0 0 1.5708"/>
+      <parent link="base_box_link"/>
+      <child link="wall_l"/>
+    </joint>
+
+    <joint name="wall_r_joint" type="fixed">
+      <origin xyz="0.05 0.7 0.325" rpy="0 0 1.5708"/>
+      <parent link="base_box_link"/>
+      <child link="wall_r"/>
+    </joint>
+
+    <!-- Frame de odom -->
+    <!-- <joint name="odom_joint" type="fixed">
+      <parent link="odom"/>
+      <child link="base_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint> -->
+
+    <!-- Frame de map -->
+    <!-- <joint name="map_joint" type="fixed">
+      <parent link="map"/>
+      <child link="odom"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </joint> -->
+
+    <!-- ******** SENSORS ******** -->
+    <xacro:include filename="$file:///home/msdelta/modsimspace/src/robot_desc_py/sensors/rob_sensors.urdf.xacro"/>
+
+    <xacro:sensor_camera_generic frame_prefix="front_" parent="base_link" node_name="camera_node" topic_prefix="~/" horizontal_fov="110" vertical_fov="70" video_width="1920" video_height="1080" video_fps="30">
+      <origin xyz="1 0 0" rpy="0 0 0"/>
+    </xacro:sensor_camera_generic>
+
+    <xacro:sensor_imu prefix="imu" parent="base_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:sensor_imu>
+
+
+    <!-- <xacro:structure_mastil_gps prefix="$(arg prefix)gps_" parent="$(arg prefix)base_link">
+      <origin xyz="-0.24 0.095 0.25" rpy="0 0 0"/>
+    </xacro:structure_mastil_gps>
+    <xacro:sensor_gps  node_namespace="$(arg robot_ns)" frame_prefix="$(arg prefix)gps_" parent="$(arg prefix)base_link" simulation="true">
+      <origin xyz="-0.24 0.095 0.625" rpy="0 0 0"/>
+    </xacro:sensor_gps>
+    <xacro:sensor_imu ns="$(arg robot_ns)" prefix="$(arg prefix)imu_" parent="$(arg prefix)base_link">
+      <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+    </xacro:sensor_imu> -->
+
+  </robot>
